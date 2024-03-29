@@ -1,3 +1,4 @@
+
 // Importar bibliotecas necessárias
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Conectar ao banco de dados MongoDB
-
+mongoose.connect('mongodb://localhost:27017/confeitariaDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Definir o esquema do produto
 const produtoSchema = new mongoose.Schema({
@@ -22,20 +23,29 @@ const produtoSchema = new mongoose.Schema({
 const Produto = mongoose.model('Produto', produtoSchema);
 
 // Rota para adicionar um novo produto ao estoque
-app.post('/produto', async (req, res) => {
-    try {
-        const novoProduto = new Produto(req.body);
-        await novoProduto.save();
-        res.status(201).send('Produto adicionado ao estoque com sucesso.');
-    } catch (err) {
-        console.error("Erro ao adicionar produto:", err);
-        res.status(500).send('Erro ao adicionar o produto ao estoque.');
-    }
+app.post('/produto', (req, res) => {
+    const novoProduto = new Produto({
+        nome: req.body.nome,
+        quantidade: req.body.quantidade,
+        preco: req.body.preco,
+        dataValidade: req.body.dataValidade
+    });
+
+    novoProduto.save((err) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Erro ao adicionar o produto ao estoque.');
+        } else {
+            res.status(201).send('Produto adicionado ao estoque com sucesso.');
+        }
+    });
 });
 
 // Rota para registrar uma venda e atualizar o estoque
 app.post('/venda', async (req, res) => {
-    const { idProduto, quantidadeVendida } = req.body;
+    const idProduto = req.body.idProduto;
+    const quantidadeVendida = req.body.quantidadeVendida;
+
     try {
         const produto = await Produto.findById(idProduto);
         if (!produto) {
@@ -50,14 +60,21 @@ app.post('/venda', async (req, res) => {
 
         produto.quantidade -= quantidadeVendida;
         await produto.save();
+        res.status(200).send('Venda registrada com sucesso.');
 
+        // Verificar se o estoque está baixo e notificar a Vanessa
         if (produto.quantidade < produto.quantidadeMinima) {
+            // Aqui você pode implementar a lógica para enviar uma notificação à Vanessa
             console.log(`Atenção: A quantidade de ${produto.nome} está abaixo do mínimo.`);
         }
-
-        res.status(200).send('Venda registrada com sucesso.');
     } catch (err) {
-        console.error("Erro ao registrar a venda:", err);
+        console.log(err);
         res.status(500).send('Erro ao registrar a venda.');
     }
+});
+
+// Iniciar o servidor
+const porta = 3000;
+app.listen(porta, () => {
+    console.log(`Servidor rodando na porta ${porta}`);
 });

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Vendas</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<form id="salesForm">
+    <h2>Registro de Vendas</h2>
+    <label for="productName">Nome do Produto:</label>
+    <input type="text" id="productName" name="productName" required>
+
+    <label for="quantity">Quantidade:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required>
+
+    <label for="price">Preço Unitário:</label>
+    <input type="number" id="price" name="price" min="0.01" step="0.01" required>
+
+    <label for="customerName">Nome do Cliente:</label>
+    <input type="text" id="customerName" name="customerName" required>
+
+    <label for="date">Data da Venda:</label>
+    <input type="date" id="date" name="date" required>
+
+    <input type="button" value="Registrar Venda" onclick="registrarVenda()">
+</form>
+
+<script>
+    function registrarVenda() {
+        // Obter os valores do formulário
+        var productName = document.getElementById("productName").value;
+        var quantity = document.getElementById("quantity").value;
+        var price = document.getElementById("price").value;
+        var customerName = document.getElementById("customerName").value;
+        var date = document.getElementById("date").value;
+
+        // Exibir os valores (você pode substituir isto por sua lógica de backend)
+        console.log("Nome do Produto:", productName);
+        console.log("Quantidade:", quantity);
+        console.log("Preço Unitário:", price);
+        console.log("Nome do Cliente:", customerName);
+        console.log("Data da Venda:", date);
+
+        // Limpar o formulário após o registro da venda
+        document.getElementById("salesForm").reset();
+    }
+</script>
+
+</body>
+</html>

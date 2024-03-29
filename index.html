@@ -4,62 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestão de Estoque</title>
+   
 </head>
 
 <link rel="stylesheet" type="text/css" href="forms.css" media="screen" />
-
 <script src="forms.js" type="text/javascript" defer></script>
 
 <body>
+
+
     <header>
+        <header id="topo"> 
+            <div class="header-black"> 
+                <h1><img src="gestão.jpeg"></h1>
+            </div>
         <h1>Sistema de Gestão de Estoque</h1>
+
+        <nav id="menu">
+            <ul>
+             <li><a href="inicio.html">Inicio</a></li>
+             <li><a href="Cadastrodeprodutos.html">Cadastro de Produtos</a></li>
+             <li><a href="Registrodevendas.html">Registro de Vendas</a></li>
+             <li><a href="Listadeprodutos.html">Lista de Produtos</a></li>
+             <li><a href="Quemsomos.html">Quem Somos</a></li>
+         </ul>
+       </nav>
     </header>
+
+    <img class="banner" src="banner.jpg">
+
+   <main>
+       <section class="principal">
+           <h2 class="titulo-principal">Sobre a Barbearia Alura</h2>
+
+           <img class="utensilios" src="utensilios.jpg" alt="Utensilios de um barbeiro.">
+    
+           <p>Localizada no coração da cidade a <strong>Barbearia Alura</strong> traz para o mercado o que há de melhor para o seu cabelo e barba. Fundada em 2019, a Barbearia Alura já é destaque na cidade e conquista novos clientes a cada dia.</p>
+
+           <p id="missao"><em>Nossa missão é: <strong>"Proporcionar auto-estima e qualidade de vida aos clientes"</strong>.</em></p>
+
+           <p>Oferecemos profissionais experientes e antenados às mudanças no mundo da moda. O atendimento possui padrão de excelência e agilidade, garantindo qualidade e satisfação dos nossos clientes.</p>
+       </section>
+
+       <section class="beneficios">
+           <h3 class="titulo-principal">Benefícios</h3>
+
+           <ul>
+               <li class="itens">Atendimento aos Clientes</li>
+               <li class="itens">Espaço diferenciado</li>
+               <li class="itens">Localização</li>
+               <li class="itens">Profissionais Qualificados</li>
+           </ul>
+
+           <img src="beneficios.jpg" class="imagembeneficios">
+       </section>
+   </main>
+
+   <footer>
+       <img src="logo-branco.png">
+       <p class="copyright">&copy; Copyright Barbearia Alura - 2019</p>
+   </footer>
+
     <section>
-        <h2>Cadastro de Produtos</h2>
-        <form id="cadastroProduto">
-            <label for="nomeProduto">Nome do Produto:</label><br>
-            <input type="text" id="nomeProduto" name="nomeProduto"><br>
-            <label for="quantidadeProduto">Quantidade:</label><br>
-            <input type="number" id="quantidadeProduto" name="quantidadeProduto"><br>
-            <label for="precoProduto">Preço:</label><br>
-            <input type="number" id="precoProduto" name="precoProduto" step="0.01"><br>
-            <label for="dataValidade">Data de Validade:</label><br>
-            <input type="date" id="dataValidade" name="dataValidade"><br><br>
-            <input type="submit" value="Adicionar Produto">
-        </form>
-        
-        <h2>Registro de Vendas</h2>
-        <form id="registroVenda">
-            <label for="idProduto">ID do Produto:</label><br>
-            <input type="number" id="idProduto" name="idProduto"><br>
-            <label for="quantidadeVendida">Quantidade Vendida:</label><br>
-            <input type="number" id="quantidadeVendida" name="quantidadeVendida"><br><br>
-            <input type="submit" value="Registrar Venda">
-        </form>
 
-        <h2>Notificações de Estoque Baixo</h2>
-        <p id="estoqueBaixo"></p>
-
-        <h2>Lista de Produtos</h2>
-        <table id="listaProdutos">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome do Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço</th>
-                    <th>Data de Validade</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aqui serão listados os produtos dinamicamente -->
-            </tbody>
-        </table>
     </section>
-
     <script>
-        // Aqui você pode adicionar o código JavaScript para interagir com a interface web
-        // e enviar requisições para o backend.
+        document.getElementById("cadastroProduto").addEventListener("submit", function(event) {
+            event.preventDefault(); // Previne o envio do formulário
+            const nomeProduto = document.getElementById("nomeProduto").value;
+            const quantidadeProduto = document.getElementById("quantidadeProduto").value;
+            const precoProduto = document.getElementById("precoProduto").value;
+            const dataValidade = document.getElementById("dataValidade").value;
+            const resultadoCadastro = document.getElementById("resultadoCadastro");
+            resultadoCadastro.innerHTML = `
+                <p>Produto cadastrado:</p>
+                <ul>
+                    <li>Nome: ${nomeProduto}</li>
+                    <li>Quantidade: ${quantidadeProduto}</li>
+                    <li>Preço: ${precoProduto}</li>
+                    <li>Data de Validade: ${dataValidade}</li>
+                </ul>
+            `;
+        });
     </script>
 </body>
 </html>

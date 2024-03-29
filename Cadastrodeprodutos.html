@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #productData {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+<form id="productForm">
+    <label for="productId">ID do Produto:</label>
+    <input type="text" id="productId" name="productId" required>
+
+    <label for="productName">Nome do Produto:</label>
+    <input type="text" id="productName" name="productName" required>
+
+    <label for="quantity">Quantidade:</label>
+    <input type="number" id="quantity" name="quantity" required>
+
+    <label for="price">Preço:</label>
+    <input type="number" id="price" name="price" step="0.01" required>
+
+    <label for="expirationDate">Data de Validade:</label>
+    <input type="date" id="expirationDate" name="expirationDate" required>
+
+    <input type="submit" value="Cadastrar Produto">
+</form>
+
+<div id="productData"></div>
+
+<script>
+    document.getElementById("productForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        // Collect form data
+        var formData = new FormData(event.target);
+        var jsonData = {};
+        formData.forEach(function(value, key) {
+            jsonData[key] = value;
+        });
+        var productHtml = "<h2>Dados do Produto:</h2>";
+        productHtml += "<p><strong>ID do Produto:</strong> " + jsonData.productId + "</p>";
+        productHtml += "<p><strong>Nome do Produto:</strong> " + jsonData.productName + "</p>";
+        productHtml += "<p><strong>Quantidade:</strong> " + jsonData.quantity + "</p>";
+        productHtml += "<p><strong>Preço:</strong> " + jsonData.price + "</p>";
+        productHtml += "<p><strong>Data de Validade:</strong> " + jsonData.expirationDate + "</p>";
+        document.getElementById("productData").innerHTML = productHtml;
+    });
+</script>
+
+</body>
+</html>
