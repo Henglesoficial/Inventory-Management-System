@@ -22,7 +22,7 @@
 
         <nav id="menu">
             <ul>
-             <li><a href="inicio.html">Inicio</a></li>
+             <li><a href="index.html">Inicio</a></li>
              <li><a href="Cadastrodeprodutos.html">Cadastro de Produtos</a></li>
              <li><a href="Registrodevendas.html">Registro de Vendas</a></li>
              <li><a href="Listadeprodutos.html">Lista de Produtos</a></li>
@@ -35,15 +35,15 @@
 
    <main>
        <section class="principal">
-           <h2 class="titulo-principal">Sobre a Barbearia Alura</h2>
+           <h2 class="titulo-principal">Sobre o cliente : </h2>
 
-           <img class="utensilios" src="utensilios.jpg" alt="Utensilios de um barbeiro.">
+           <img class="utensilios" src="utensilios.jpg" alt="Vanessa Lima">
     
-           <p>Localizada no coração da cidade a <strong>Barbearia Alura</strong> traz para o mercado o que há de melhor para o seu cabelo e barba. Fundada em 2019, a Barbearia Alura já é destaque na cidade e conquista novos clientes a cada dia.</p>
+           <p>Localizada na cidade de Itapecerica da Serra - SP, a <strong> Vanessa Lima Confeitaria </strong> traz para o mercado o que há de melhor a area da Confeitaria</p>
 
            <p id="missao"><em>Nossa missão é: <strong>"Proporcionar auto-estima e qualidade de vida aos clientes"</strong>.</em></p>
 
-           <p>Oferecemos profissionais experientes e antenados às mudanças no mundo da moda. O atendimento possui padrão de excelência e agilidade, garantindo qualidade e satisfação dos nossos clientes.</p>
+           <p> O atendimento possui padrão de excelência e agilidade, garantindo qualidade e satisfação dos nossos clientes.</p>
        </section>
 
        <section class="beneficios">
@@ -62,30 +62,9 @@
 
    <footer>
        <img src="logo-branco.png">
-       <p class="copyright">&copy; Copyright Barbearia Alura - 2019</p>
+       <p class="copyright">&copy; Copyright Vanessa Lima Confeitaria - 2024</p>
    </footer>
 
-    <section>
 
-    </section>
-    <script>
-        document.getElementById("cadastroProduto").addEventListener("submit", function(event) {
-            event.preventDefault(); // Previne o envio do formulário
-            const nomeProduto = document.getElementById("nomeProduto").value;
-            const quantidadeProduto = document.getElementById("quantidadeProduto").value;
-            const precoProduto = document.getElementById("precoProduto").value;
-            const dataValidade = document.getElementById("dataValidade").value;
-            const resultadoCadastro = document.getElementById("resultadoCadastro");
-            resultadoCadastro.innerHTML = `
-                <p>Produto cadastrado:</p>
-                <ul>
-                    <li>Nome: ${nomeProduto}</li>
-                    <li>Quantidade: ${quantidadeProduto}</li>
-                    <li>Preço: ${precoProduto}</li>
-                    <li>Data de Validade: ${dataValidade}</li>
-                </ul>
-            `;
-        });
-    </script>
 </body>
 </html>

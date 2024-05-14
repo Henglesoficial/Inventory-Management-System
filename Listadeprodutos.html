@@ -4,56 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            background-color: #282a36;
+            color: #f8f8f2;
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
+        form {
+            max-width: 400px;
             margin: 20px auto;
-            padding: 0 20px;
+            padding: 20px;
+            border: 1px solid #6272a4;
+            border-radius: 5px;
+            background-color: #44475a;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #f8f8f2;
         }
-        li {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #6272a4;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #6272a4;
+            color: #f8f8f2;
         }
-        li:last-child {
-            border-bottom: none;
+        input[type="submit"] {
+            background-color: #50fa7b;
+            color: #f8f8f2;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #50fa7b;
+        }
+        #productData {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #6272a4;
+            border-radius: 5px;
+            background-color: #44475a;
+            color: #f8f8f2;
+        }
+        /* Modo escuro */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e5e5e5;
+        }
+        form.dark-mode {
+            border-color: #303030;
+            background-color: #212121;
+        }
+        input.dark-mode {
+            background-color: #303030;
+            color: #e5e5e5;
+        }
+        input[type="submit"].dark-mode {
+            background-color: #4caf50;
+        }
+        #productData.dark-mode {
+            border-color: #303030;
+            background-color: #212121;
+        }
+        header.dark-mode {
+            background-color: #333;
+        }
+        header.dark-mode h1, header.dark-mode h2 {
+            color: #eee;
+        }
+        #menu.dark-mode ul li a {
+            color: #eee;
+        }
+        .container.dark-mode ul li {
+            color: #eee;
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
     <header>
-            <header id="topo"> 
-            <div class="header-black"> 
-                <h1><img src="gestão.jpeg"></h1>
-            </div>
+        <div class="header-black"> 
+            <h1><img src="gestão.jpeg"></h1>
+        </div>
         <h1>Sistema de Gestão de Estoque</h1>
         <h2>Lista de Produtos</h2>
 
-        <nav id="menu">
+        <nav id="menu" class="dark-mode">
             <ul>
-             <li><a href="index.html">Inicio</a></li>
-             <li><a href="Cadastrodeprodutos.html">Cadastro de Produtos</a></li>
-             <li><a href="Registrodevendas.html">Registro de Vendas</a></li>
-             <li><a href="Listadeprodutos.html">Lista de Produtos</a></li>
-             <li><a href="Quemsomos.html">Quem Somos</a></li>
-         </ul>
-       </nav>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Cadastrodeprodutos.html">Cadastro de Produtos</a></li>
+                <li><a href="Registrodevendas.html">Registro de Vendas</a></li>
+                <li><a href="Listadeprodutos.html">Lista de Produtos</a></li>
+                <li><a href="Quemsomos.html">Quem Somos</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="container">
+    <div class="container dark-mode">
         <ul>
             <li>Produto 1 - R$ 50.00</li>
             <li>Produto 2 - R$ 30.00</li>
